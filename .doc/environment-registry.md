@@ -17,7 +17,7 @@ This document tracks all external services, deployment URLs, and tech stack chan
 | Component | Platform | URL | Status |
 |-----------|----------|-----|--------|
 | Frontend | Vercel | (not deployed) | - |
-| Backend | Fly.io | (not deployed) | - |
+| Backend | Render | (not deployed) | - |
 | Database | Supabase | (managed) | - |
 
 ## Tech Stack
