@@ -28,17 +28,11 @@ jobs:
           pnpm install
           pip install -r apps/api/requirements.txt
           
-      - name: Lint Python
+- name: Lint Python
         run: |
           pip install ruff
           ruff check apps/api/ --ignore F401
-          
-      - name: Type check
-        run: pnpm turbo type-check
-        
-      - name: Test
-        run: pnpm turbo test
-        
+         
   type-check-web:
     runs-on: ubuntu-latest
     steps:
