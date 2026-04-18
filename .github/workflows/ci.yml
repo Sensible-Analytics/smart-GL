@@ -34,7 +34,7 @@ jobs:
           ruff check apps/api/ --ignore F401
           
       - name: Type check
-        run: pnpm turbo typecheck
+        run: pnpm turbo type-check
         
       - name: Test
         run: pnpm turbo test
