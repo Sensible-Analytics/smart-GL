@@ -1,5 +1,4 @@
 import os
-import re
 import anthropic
 from pydantic import BaseModel, Field
 from typing import Optional, List, Literal
@@ -115,7 +114,7 @@ Rules:
 If confidence below {self.confidence_threshold:.2f}, return "REVIEW" on the first line."""
 
     def _parse(self, text: str) -> LLMCategoriserOutput:
-        lines = [l.strip() for l in text.strip().split("\n")]
+        lines = [line.strip() for line in text.strip().split("\n")]
 
         if not lines or lines[0].upper() == "REVIEW":
             return LLMCategoriserOutput(
