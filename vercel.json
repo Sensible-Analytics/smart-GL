@@ -1,5 +1,8 @@
 {
   "buildCommand": "cd apps/web && pnpm build",
   "installCommand": "cd apps/web && pnpm install",
-  "outputDirectory": "apps/web/.next"
+  "outputDirectory": "apps/web/.next",
+  "env": {
+    "NEXT_PUBLIC_API_URL": "https://smartgl-api-v2.onrender.com"
+  }
 }
