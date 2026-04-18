@@ -5,6 +5,12 @@ from openai import AsyncOpenAI
 from supabase import Client
 from typing import Optional
 
+from services.llm_categoriser import (
+    LLMCategoriser,
+    LLMCategoriserInput,
+    ChartOfAccountsEntry,
+)
+
 anthropic_client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 openai_client = AsyncOpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
@@ -66,83 +72,37 @@ async def categorise_transaction(
                 "reasoning": None,
             }
 
-    coa_text = "\n".join(
-        f"{a['code']} | {a['name']} | {a['account_type']} | GST:{a['gst_code']}"
-        for a in coa
-    )
-    direction = "income/credit" if amount_cents > 0 else "expense/debit"
+    direction = "income" if amount_cents > 0 else "expense"
     amount_aud = abs(amount_cents) / 100
 
-    prompt = f"""You are an Australian bookkeeper for a small plumbing and trades business.
-Categorise the following bank transaction to the correct account in the Chart of Accounts.
+    coa_entries = [
+        ChartOfAccountsEntry(
+            code=a["code"],
+            name=a["name"],
+            account_type=a["account_type"],
+            gst_code=a["gst_code"],
+            id=a.get("id"),
+        )
+        for a in coa
+    ]
 
-Transaction details:
-- Description: {description_clean}
-- Amount: ${amount_aud:.2f} AUD ({direction})
-- Merchant (if known): {merchant_name or "unknown"}
-- Bank category (hint only): {basiq_category or "unknown"}
-
-Chart of Accounts:
-{coa_text}
-
-Rules:
-1. Return ONLY the account code number (e.g. "5000") and nothing else on the first line.
-2. On the second line, return the GST code that applies (G1, G2, G3, G4, G9, G11, or N-T).
-3. On the third line, return a confidence score between 0.00 and 1.00.
-4. On the fourth line, give a one-sentence reason for your choice.
-
-If you cannot determine the correct account with confidence above 0.70, return "REVIEW" on the first line."""
-
-    message = anthropic_client.messages.create(
-        model="claude-sonnet-4-20250514",
-        max_tokens=150,
-        messages=[{"role": "user", "content": prompt}],
+    categoriser = LLMCategoriser(confidence_threshold=LLM_THRESHOLD)
+    input_data = LLMCategoriserInput(
+        description=description_clean,
+        amount_aud=amount_aud,
+        direction=direction,
+        merchant_name=merchant_name,
+        basiq_category=basiq_category,
+        chart_of_accounts=coa_entries,
     )
-    response_text = message.content[0].text.strip()
-    lines = response_text.split("\n")
-
-    if lines[0].strip().upper() == "REVIEW" or len(lines) < 4:
-        return {
-            "account_id": None,
-            "gst_code": None,
-            "confidence": 0.0,
-            "tier": "human",
-            "reasoning": response_text,
-        }
-
-    code = lines[0].strip()
-    gst_code = lines[1].strip()
-    try:
-        confidence = float(lines[2].strip())
-    except ValueError:
-        confidence = 0.5
-    reasoning = lines[3].strip()
-
-    if confidence < LLM_THRESHOLD:
-        return {
-            "account_id": None,
-            "gst_code": None,
-            "confidence": confidence,
-            "tier": "human",
-            "reasoning": reasoning,
-        }
-
-    matched_account = next((a for a in coa if a["code"] == code), None)
-    if not matched_account:
-        return {
-            "account_id": None,
-            "gst_code": None,
-            "confidence": 0.0,
-            "tier": "human",
-            "reasoning": f"LLM returned unknown account code: {code}",
-        }
+    output = categoriser.forward(input_data)
 
     return {
-        "account_id": matched_account["id"],
-        "gst_code": gst_code,
-        "confidence": confidence,
-        "tier": "llm",
-        "reasoning": reasoning,
+        "account_id": output.account_id,
+        "gst_code": output.gst_code,
+        "confidence": output.confidence,
+        "tier": output.tier,
+        "reasoning": output.reasoning,
     }
 
 
