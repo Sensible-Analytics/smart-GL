@@ -34,4 +34,11 @@ app.include_router(accounts.router, prefix="/accounts", tags=["accounts"])
 
 @app.get("/health")
 async def health():
-    return {"status": "ok"}
+    return {"status": "ok", "version": "0.1.0"}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    import os
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
