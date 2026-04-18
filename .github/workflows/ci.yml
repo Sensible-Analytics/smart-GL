@@ -53,5 +53,5 @@ jobs:
           cache: 'pnpm'
       - name: Install and build
         run: |
-          pnpm install
-          pnpm --filter web build
+          pnpm install --filter web
+          cd apps/web && pnpm build

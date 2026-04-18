@@ -1,7 +1,6 @@
-from fastapi import APIRouter, Depends, Query, HTTPException
+from fastapi import APIRouter, Query, HTTPException
 from pydantic import BaseModel
 from typing import Optional
-from datetime import date
 from db import get_supabase, set_tenant
 from services.categorise import (
     clean_description,
