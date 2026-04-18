@@ -26,13 +26,13 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm install
-          pip install -r apps/api/requirements.txt
+pip install -r apps/api/requirements.txt
           
-- name: Lint Python
+      - name: Lint Python
         run: |
           pip install ruff
           ruff check apps/api/ --ignore F401
-         
+        
   type-check-web:
     runs-on: ubuntu-latest
     steps:
