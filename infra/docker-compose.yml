@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  formance-postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: formance
+      POSTGRES_USER: formance
+      POSTGRES_PASSWORD: formance
+    ports:
+      - "5433:5432"
+    volumes:
+      - formance_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U formance"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  formance-ledger:
+    image: ghcr.io/formancehq/ledger:latest
+    ports:
+      - "3068:3068"
+    environment:
+      STORAGE_DRIVER: postgres
+      STORAGE_POSTGRES_CONN_STRING: "postgresql://formance:formance@formance-postgres:5432/formance?sslmode=disable"
+    depends_on:
+      formance-postgres:
+        condition: service_healthy
+
+volumes:
+  formance_pgdata:
