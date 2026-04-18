@@ -1,0 +1,24 @@
+CREATE OR REPLACE FUNCTION match_embeddings(
+  query_embedding vector(1536),
+  tenant_id       UUID,
+  match_threshold FLOAT DEFAULT 0.88,
+  match_count     INT   DEFAULT 1
+)
+RETURNS TABLE (
+  account_id   UUID,
+  gst_code     TEXT,
+  similarity   FLOAT
+)
+LANGUAGE sql STABLE
+AS $$
+  SELECT
+    e.account_id,
+    a.gst_code,
+    1 - (e.embedding <=> query_embedding) AS similarity
+  FROM categorisation_embeddings e
+  JOIN accounts a ON a.id = e.account_id
+  WHERE e.tenant_id = match_embeddings.tenant_id
+    AND 1 - (e.embedding <=> query_embedding) >= match_threshold
+  ORDER BY similarity DESC
+  LIMIT match_count;
+$$;
