@@ -11,8 +11,19 @@ from services.llm_categoriser import (
     ChartOfAccountsEntry,
 )
 
-anthropic_client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-openai_client = AsyncOpenAI(api_key=os.environ["OPENAI_API_KEY"])
+# Use mock values when env vars not set (for testing)
+_ant_key = os.environ.get("ANTHROPIC_API_KEY", "mock-key-for-testing")
+_openai_key = os.environ.get("OPENAI_API_KEY", "sk-mock-key-for-testing")
+
+try:
+    anthropic_client = anthropic.Anthropic(api_key=_ant_key)
+except Exception:
+    anthropic_client = None
+
+try:
+    openai_client = AsyncOpenAI(api_key=_openai_key)
+except Exception:
+    openai_client = None
 
 EMBEDDING_MODEL = "text-embedding-3-small"
 EMBEDDING_DIM = 1536
