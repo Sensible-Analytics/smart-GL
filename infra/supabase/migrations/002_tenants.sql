@@ -1,5 +1,5 @@
 CREATE TABLE tenants (
-  id                UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   name              TEXT NOT NULL,
   abn               CHAR(11),
   gst_registered    BOOLEAN NOT NULL DEFAULT TRUE,

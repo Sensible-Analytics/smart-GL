@@ -1,5 +1,5 @@
 CREATE TABLE journal_entries (
-  id                UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id         UUID NOT NULL REFERENCES tenants(id),
   transaction_id    UUID REFERENCES bank_transactions(id),
   formance_tx_id    TEXT,
@@ -14,7 +14,7 @@ CREATE TABLE journal_entries (
 );
 
 CREATE TABLE journal_lines (
-  id                UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id         UUID NOT NULL REFERENCES tenants(id),
   journal_entry_id  UUID NOT NULL REFERENCES journal_entries(id),
   account_id        UUID NOT NULL REFERENCES accounts(id),

@@ -1,0 +1,343 @@
+- generic [ref=e4]:
+  - generic [ref=e50]:
+    - heading "Select your institution" [level=3] [ref=e51]
+    - generic [ref=e52]:
+      - textbox "Filter institutions" [ref=e53]
+      - img [ref=e55]
+    - generic [ref=e57]:
+      - button "ANZ ANZ" [ref=e58] [cursor=pointer]:
+        - generic [ref=e59]:
+          - img "ANZ" [ref=e61]
+          - generic [ref=e62]: ANZ
+        - img [ref=e65]
+      - button "ANZ (NZ) ANZ (NZ)" [ref=e67] [cursor=pointer]:
+        - generic [ref=e68]:
+          - img "ANZ (NZ)" [ref=e70]
+          - generic [ref=e71]: ANZ (NZ)
+        - img [ref=e74]
+      - button "Arab Bank Arab Bank" [ref=e76] [cursor=pointer]:
+        - generic [ref=e77]:
+          - img "Arab Bank" [ref=e79]
+          - generic [ref=e80]: Arab Bank
+        - img [ref=e83]
+      - button "CBA CBA" [ref=e85] [cursor=pointer]:
+        - generic [ref=e86]:
+          - img "CBA" [ref=e88]
+          - generic [ref=e89]: CBA
+        - img [ref=e92]
+      - button "ING Direct ING Direct" [ref=e94] [cursor=pointer]:
+        - generic [ref=e95]:
+          - img "ING Direct" [ref=e97]
+          - generic [ref=e98]: ING Direct
+        - img [ref=e101]
+      - button "MyGov Centrelink MyGov Centrelink" [ref=e103] [cursor=pointer]:
+        - generic [ref=e104]:
+          - img "MyGov Centrelink" [ref=e106]
+          - generic [ref=e107]: MyGov Centrelink
+        - img [ref=e110]
+      - button "NAB NAB" [ref=e112] [cursor=pointer]:
+        - generic [ref=e113]:
+          - img "NAB" [ref=e115]
+          - generic [ref=e116]: NAB
+        - img [ref=e119]
+      - button "TSB TSB" [ref=e121] [cursor=pointer]:
+        - generic [ref=e122]:
+          - img "TSB" [ref=e124]
+          - generic [ref=e125]: TSB
+        - img [ref=e128]
+      - button "Westpac Westpac" [ref=e130] [cursor=pointer]:
+        - generic [ref=e131]:
+          - img "Westpac" [ref=e133]
+          - generic [ref=e134]: Westpac
+        - img [ref=e137]
+      - button "WP (NZ) WP (NZ)" [ref=e139] [cursor=pointer]:
+        - generic [ref=e140]:
+          - img "WP (NZ)" [ref=e142]
+          - generic [ref=e143]: WP (NZ)
+        - img [ref=e146]
+      - button "Amex Amex" [ref=e148] [cursor=pointer]:
+        - generic [ref=e149]:
+          - img "Amex" [ref=e151]
+          - generic [ref=e152]: Amex
+        - img [ref=e155]
+      - button "BankSA BankSA" [ref=e157] [cursor=pointer]:
+        - generic [ref=e158]:
+          - img "BankSA" [ref=e160]
+          - generic [ref=e161]: BankSA
+        - img [ref=e164]
+      - button "Bankwest Bankwest" [ref=e166] [cursor=pointer]:
+        - generic [ref=e167]:
+          - img "Bankwest" [ref=e169]
+          - generic [ref=e170]: Bankwest
+        - img [ref=e173]
+      - button "Bendigo and Adelaide Bank Bendigo and Adelaide Bank" [ref=e175] [cursor=pointer]:
+        - generic [ref=e176]:
+          - img "Bendigo and Adelaide Bank" [ref=e178]
+          - generic [ref=e179]: Bendigo and Adelaide Bank
+        - img [ref=e182]
+      - button "BOM BOM" [ref=e184] [cursor=pointer]:
+        - generic [ref=e185]:
+          - img "BOM" [ref=e187]
+          - generic [ref=e188]: BOM
+        - img [ref=e191]
+      - button "My AMP My AMP" [ref=e193] [cursor=pointer]:
+        - generic [ref=e194]:
+          - img "My AMP" [ref=e196]
+          - generic [ref=e197]: My AMP
+        - img [ref=e200]
+      - button "St. George St. George" [ref=e202] [cursor=pointer]:
+        - generic [ref=e203]:
+          - img "St. George" [ref=e205]
+          - generic [ref=e206]: St. George
+        - img [ref=e209]
+      - button "Suncorp Suncorp" [ref=e211] [cursor=pointer]:
+        - generic [ref=e212]:
+          - img "Suncorp" [ref=e214]
+          - generic [ref=e215]: Suncorp
+        - img [ref=e218]
+      - button "28 Degrees 28 Degrees" [ref=e220] [cursor=pointer]:
+        - generic [ref=e221]:
+          - img "28 Degrees" [ref=e223]
+          - generic [ref=e224]: 28 Degrees
+        - img [ref=e227]
+      - button "Adelaide Bank Adelaide Bank" [ref=e229] [cursor=pointer]:
+        - generic [ref=e230]:
+          - img "Adelaide Bank" [ref=e232]
+          - generic [ref=e233]: Adelaide Bank
+        - img [ref=e236]
+      - button "AMB AMB" [ref=e238] [cursor=pointer]:
+        - generic [ref=e239]:
+          - img "AMB" [ref=e241]
+          - generic [ref=e242]: AMB
+        - img [ref=e245]
+      - button "Bank First Bank First" [ref=e247] [cursor=pointer]:
+        - generic [ref=e248]:
+          - img "Bank First" [ref=e250]
+          - generic [ref=e251]: Bank First
+        - img [ref=e254]
+      - button "Beyond Bank Beyond Bank" [ref=e256] [cursor=pointer]:
+        - generic [ref=e257]:
+          - img "Beyond Bank" [ref=e259]
+          - generic [ref=e260]: Beyond Bank
+        - img [ref=e263]
+      - button "Defence Bank Defence Bank" [ref=e265] [cursor=pointer]:
+        - generic [ref=e266]:
+          - img "Defence Bank" [ref=e268]
+          - generic [ref=e269]: Defence Bank
+        - img [ref=e272]
+      - button "Gateway Bank Gateway Bank" [ref=e274] [cursor=pointer]:
+        - generic [ref=e275]:
+          - img "Gateway Bank" [ref=e277]
+          - generic [ref=e278]: Gateway Bank
+        - img [ref=e281]
+      - button "Great Southern Bank Great Southern Bank" [ref=e283] [cursor=pointer]:
+        - generic [ref=e284]:
+          - img "Great Southern Bank" [ref=e286]
+          - generic [ref=e287]: Great Southern Bank
+        - img [ref=e290]
+      - button "Heritage and People's Choice Heritage and People's Choice" [ref=e292] [cursor=pointer]:
+        - generic [ref=e293]:
+          - img "Heritage and People's Choice" [ref=e295]
+          - generic [ref=e296]: Heritage and People's Choice
+        - img [ref=e299]
+      - button "IOOF IOOF" [ref=e301] [cursor=pointer]:
+        - generic [ref=e302]:
+          - img "IOOF" [ref=e304]
+          - generic [ref=e305]: IOOF
+        - img [ref=e308]
+      - button "Latitude GO Latitude GO" [ref=e310] [cursor=pointer]:
+        - generic [ref=e311]:
+          - img "Latitude GO" [ref=e313]
+          - generic [ref=e314]: Latitude GO
+        - img [ref=e317]
+      - button "Latitude Infinity Latitude Infinity" [ref=e319] [cursor=pointer]:
+        - generic [ref=e320]:
+          - img "Latitude Infinity" [ref=e322]
+          - generic [ref=e323]: Latitude Infinity
+        - img [ref=e326]
+      - button "Latitude Low Rate Latitude Low Rate" [ref=e328] [cursor=pointer]:
+        - generic [ref=e329]:
+          - img "Latitude Low Rate" [ref=e331]
+          - generic [ref=e332]: Latitude Low Rate
+        - img [ref=e335]
+      - button "ME Bank ME Bank" [ref=e337] [cursor=pointer]:
+        - generic [ref=e338]:
+          - img "ME Bank" [ref=e340]
+          - generic [ref=e341]: ME Bank
+        - img [ref=e344]
+      - button "Myer One Myer One" [ref=e346] [cursor=pointer]:
+        - generic [ref=e347]:
+          - img "Myer One" [ref=e349]
+          - generic [ref=e350]: Myer One
+        - img [ref=e353]
+      - button "MyState MyState" [ref=e355] [cursor=pointer]:
+        - generic [ref=e356]:
+          - img "MyState" [ref=e358]
+          - generic [ref=e359]: MyState
+        - img [ref=e362]
+      - button "RACQ RACQ" [ref=e364] [cursor=pointer]:
+        - generic [ref=e365]:
+          - img "RACQ" [ref=e367]
+          - generic [ref=e368]: RACQ
+        - img [ref=e371]
+      - button "RAMS RAMS" [ref=e373] [cursor=pointer]:
+        - generic [ref=e374]:
+          - img "RAMS" [ref=e376]
+          - generic [ref=e377]: RAMS
+        - img [ref=e380]
+      - button "Rest Rest" [ref=e382] [cursor=pointer]:
+        - generic [ref=e383]:
+          - img "Rest" [ref=e385]
+          - generic [ref=e386]: Rest
+        - img [ref=e389]
+      - button "Virgin Money Virgin Money" [ref=e391] [cursor=pointer]:
+        - generic [ref=e392]:
+          - img "Virgin Money" [ref=e394]
+          - generic [ref=e395]: Virgin Money
+        - img [ref=e398]
+      - button "Woolworths Woolworths" [ref=e400] [cursor=pointer]:
+        - generic [ref=e401]:
+          - img "Woolworths" [ref=e403]
+          - generic [ref=e404]: Woolworths
+        - img [ref=e407]
+      - button "ZipBiz ZipBiz" [ref=e409] [cursor=pointer]:
+        - generic [ref=e410]:
+          - img "ZipBiz" [ref=e412]
+          - generic [ref=e413]: ZipBiz
+        - img [ref=e416]
+      - button "ZipMoney ZipMoney" [ref=e418] [cursor=pointer]:
+        - generic [ref=e419]:
+          - img "ZipMoney" [ref=e421]
+          - generic [ref=e422]: ZipMoney
+        - img [ref=e425]
+      - button "ZipPay ZipPay" [ref=e427] [cursor=pointer]:
+        - generic [ref=e428]:
+          - img "ZipPay" [ref=e430]
+          - generic [ref=e431]: ZipPay
+        - img [ref=e434]
+      - button "Bank Australia Bank Australia" [ref=e436] [cursor=pointer]:
+        - generic [ref=e437]:
+          - img "Bank Australia" [ref=e439]
+          - generic [ref=e440]: Bank Australia
+        - img [ref=e443]
+      - button "Bank of Sydney Bank of Sydney" [ref=e445] [cursor=pointer]:
+        - generic [ref=e446]:
+          - img "Bank of Sydney" [ref=e448]
+          - generic [ref=e449]: Bank of Sydney
+        - img [ref=e452]
+      - button "BCU BCU" [ref=e454] [cursor=pointer]:
+        - generic [ref=e455]:
+          - img "BCU" [ref=e457]
+          - generic [ref=e458]: BCU
+        - img [ref=e461]
+      - button "BOQ BOQ" [ref=e463] [cursor=pointer]:
+        - generic [ref=e464]:
+          - img "BOQ" [ref=e466]
+          - generic [ref=e467]: BOQ
+        - img [ref=e470]
+      - button "Coastline Coastline" [ref=e472] [cursor=pointer]:
+        - generic [ref=e473]:
+          - img "Coastline" [ref=e475]
+          - generic [ref=e476]: Coastline
+        - img [ref=e479]
+      - button "Greater Bank Greater Bank" [ref=e481] [cursor=pointer]:
+        - generic [ref=e482]:
+          - img "Greater Bank" [ref=e484]
+          - generic [ref=e485]: Greater Bank
+        - img [ref=e488]
+      - button "Heritage Bank Heritage Bank" [ref=e490] [cursor=pointer]:
+        - generic [ref=e491]:
+          - img "Heritage Bank" [ref=e493]
+          - generic [ref=e494]: Heritage Bank
+        - img [ref=e497]
+      - button "HSBC HSBC" [ref=e499] [cursor=pointer]:
+        - generic [ref=e500]:
+          - img "HSBC" [ref=e502]
+          - generic [ref=e503]: HSBC
+        - img [ref=e506]
+      - button "IMB IMB" [ref=e508] [cursor=pointer]:
+        - generic [ref=e509]:
+          - img "IMB" [ref=e511]
+          - generic [ref=e512]: IMB
+        - img [ref=e515]
+      - button "MOVE Bank MOVE Bank" [ref=e517] [cursor=pointer]:
+        - generic [ref=e518]:
+          - img "MOVE Bank" [ref=e520]
+          - generic [ref=e521]: MOVE Bank
+        - img [ref=e524]
+      - button "NPBS NPBS" [ref=e526] [cursor=pointer]:
+        - generic [ref=e527]:
+          - img "NPBS" [ref=e529]
+          - generic [ref=e530]: NPBS
+        - img [ref=e533]
+      - button "P&N P&N" [ref=e535] [cursor=pointer]:
+        - generic [ref=e536]:
+          - img "P&N" [ref=e538]
+          - generic [ref=e539]: P&N
+        - img [ref=e542]
+      - button "QCCU QCCU" [ref=e544] [cursor=pointer]:
+        - generic [ref=e545]:
+          - img "QCCU" [ref=e547]
+          - generic [ref=e548]: QCCU
+        - img [ref=e551]
+      - button "Rabobank Rabobank" [ref=e553] [cursor=pointer]:
+        - generic [ref=e554]:
+          - img "Rabobank" [ref=e556]
+          - generic [ref=e557]: Rabobank
+        - img [ref=e560]
+      - button "Summerland Summerland" [ref=e562] [cursor=pointer]:
+        - generic [ref=e563]:
+          - img "Summerland" [ref=e565]
+          - generic [ref=e566]: Summerland
+        - img [ref=e569]
+      - button "TMBank TMBank" [ref=e571] [cursor=pointer]:
+        - generic [ref=e572]:
+          - img "TMBank" [ref=e574]
+          - generic [ref=e575]: TMBank
+        - img [ref=e578]
+      - button "Up Bank Up Bank" [ref=e580] [cursor=pointer]:
+        - generic [ref=e581]:
+          - img "Up Bank" [ref=e583]
+          - generic [ref=e584]: Up Bank
+        - img [ref=e587]
+      - button "Basiq Basiq" [ref=e589] [cursor=pointer]:
+        - generic [ref=e590]:
+          - img "Basiq" [ref=e592]
+          - generic [ref=e593]: Basiq
+        - img [ref=e596]
+      - button "HooliGov HooliGov" [ref=e598] [cursor=pointer]:
+        - generic [ref=e599]:
+          - img "HooliGov" [ref=e601]
+          - generic [ref=e602]: HooliGov
+        - img [ref=e605]
+      - button "Hooli Hooli" [active] [ref=e607] [cursor=pointer]:
+        - generic [ref=e608]:
+          - img "Hooli" [ref=e610]
+          - generic [ref=e611]: Hooli
+        - img [ref=e614]
+      - button "Nucleus Nucleus" [ref=e616] [cursor=pointer]:
+        - generic [ref=e617]:
+          - img "Nucleus" [ref=e619]
+          - generic [ref=e620]: Nucleus
+        - img [ref=e623]
+      - button "Pied Piper Pied Piper" [ref=e625] [cursor=pointer]:
+        - generic [ref=e626]:
+          - img "Pied Piper" [ref=e628]
+          - generic [ref=e629]: Pied Piper
+        - img [ref=e632]
+      - button "RTB RTB" [ref=e634] [cursor=pointer]:
+        - generic [ref=e635]:
+          - img "RTB" [ref=e637]
+          - generic [ref=e638]: RTB
+        - img [ref=e641]
+  - generic [ref=e644]:
+    - generic [ref=e645]:
+      - generic [ref=e646]: This connection is not supported by the Consumer Data Right.
+      - generic [ref=e647]: This connection is made and managed via Basiq's secure web connector. The information collected is the same information outlined in the "Share your financial data" screen.
+      - link "See more information on www.basiq.io" [ref=e648] [cursor=pointer]:
+        - /url: https://basiq.io/products/connect/
+    - generic [ref=e649]:
+      - button "Cancel" [ref=e650] [cursor=pointer]:
+        - generic [ref=e651]: Cancel
+      - button "Approve" [ref=e652] [cursor=pointer]:
+        - generic [ref=e653]: Approve

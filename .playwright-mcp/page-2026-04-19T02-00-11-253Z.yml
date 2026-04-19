@@ -1,0 +1,23 @@
+- generic [ref=e4]:
+  - generic [ref=e654]:
+    - banner [ref=e655]:
+      - img "logo" [ref=e656]
+    - button "Back" [ref=e657] [cursor=pointer]:
+      - img [ref=e659]
+      - generic [ref=e662]: Back
+    - generic [ref=e664]:
+      - heading "Login to Hooli" [level=3] [ref=e665]:
+        - text: Login to
+        - strong [ref=e666]: Hooli
+      - generic [ref=e667]:
+        - generic [ref=e668]:
+          - generic [ref=e669]: Login
+          - textbox [ref=e670]
+        - generic [ref=e671]:
+          - generic [ref=e672]: Password
+          - textbox [ref=e673]
+        - generic [ref=e675] [cursor=pointer]:
+          - img [ref=e677]
+          - generic [ref=e680]: This connection will be made directly with the institution and be managed by Basiq. Learn more
+  - button "Login" [disabled] [ref=e683]:
+    - generic [ref=e684]: Login

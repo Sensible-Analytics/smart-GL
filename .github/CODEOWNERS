@@ -1,0 +1,19 @@
+# Sensible Analytics CODEOWNERS
+
+# Default: Senior Engineers (Lead Team)
+* @Sensible-Analytics/lead
+
+# Frontend (React/TypeScript)
+apps/web/ @Sensible-Analytics/frontend
+*.tsx @Sensible-Analytics/frontend
+
+# Backend (API, Services)
+apps/api/ @Sensible-Analytics/backend
+
+# Infrastructure
+terraform/ @Sensible-Analytics/devops
+docker-compose.yml @Sensible-Analytics/devops
+
+# GitHub configs (keep last)
+.github/ @Sensible-Analytics/lead
+CODEOWNERS @Sensible-Analytics/lead

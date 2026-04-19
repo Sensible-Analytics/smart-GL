@@ -1,5 +1,5 @@
 CREATE TABLE categorisations (
-  id                UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id         UUID NOT NULL REFERENCES tenants(id),
   transaction_id    UUID NOT NULL REFERENCES bank_transactions(id),
   account_id        UUID NOT NULL REFERENCES accounts(id),
@@ -25,21 +25,22 @@ CREATE POLICY cat_tenant_isolation ON categorisations
   USING (tenant_id::TEXT = current_setting('app.current_tenant_id', TRUE));
 
 
-CREATE TABLE categorisation_embeddings (
-  id                UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  tenant_id         UUID NOT NULL REFERENCES tenants(id),
-  description_clean TEXT NOT NULL,
-  account_id        UUID NOT NULL REFERENCES accounts(id),
-  embedding         vector(1536),
-  sample_count      INT NOT NULL DEFAULT 1,
-  created_at        TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  updated_at        TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  UNIQUE(tenant_id, description_clean, account_id)
-);
+-- pgvector requires Supabase Pro - commented out
+-- CREATE TABLE categorisation_embeddings (
+--   id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+--   tenant_id         UUID NOT NULL REFERENCES tenants(id),
+--   description_clean TEXT NOT NULL,
+--   account_id        UUID NOT NULL REFERENCES accounts(id),
+--   embedding         vector(1536),
+--   sample_count      INT NOT NULL DEFAULT 1,
+--   created_at        TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+--   updated_at        TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+--   UNIQUE(tenant_id, description_clean, account_id)
+-- );
 
-CREATE INDEX idx_embedding_tenant ON categorisation_embeddings(tenant_id);
-CREATE INDEX idx_embedding_vector ON categorisation_embeddings
-  USING ivfflat (embedding vector_cosine_ops) WITH (lists = 100);
-ALTER TABLE categorisation_embeddings ENABLE ROW LEVEL SECURITY;
-CREATE POLICY embedding_tenant_isolation ON categorisation_embeddings
-  USING (tenant_id::TEXT = current_setting('app.current_tenant_id', TRUE));
+-- CREATE INDEX idx_embedding_tenant ON categorisation_embeddings(tenant_id);
+-- CREATE INDEX idx_embedding_vector ON categorisation_embeddings
+--   USING ivfflat (embedding vector_cosine_ops) WITH (lists = 100);
+-- ALTER TABLE categorisation_embeddings ENABLE ROW LEVEL SECURITY;
+-- CREATE POLICY embedding_tenant_isolation ON categorisation_embeddings
+--   USING (tenant_id::TEXT = current_setting('app.current_tenant_id', TRUE));
