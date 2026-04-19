@@ -6,7 +6,9 @@
 -- CREATE EXTENSION IF NOT EXISTS pg_cron;
 
 -- Function to auto-categorise unconfirmed transactions
-CREATE OR REPLACE FUNCTION cron.auto_categorise_transactions()
+-- pg_cron requires Supabase Pro - commented out
+-- CREATE OR REPLACE FUNCTION cron.auto_categorise_transactions()
+CREATE OR REPLACE FUNCTION auto_categorise_transactions()
 RETURNS void
 LANGUAGE plpgsql
 SECURITY DEFINER

@@ -1,5 +1,5 @@
 CREATE TABLE accounts (
-  id            UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id     UUID NOT NULL REFERENCES tenants(id),
   code          TEXT NOT NULL,
   name          TEXT NOT NULL,

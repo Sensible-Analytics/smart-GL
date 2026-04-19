@@ -1,0 +1,14 @@
+- generic [ref=e4]:
+  - generic [ref=e8]:
+    - generic [ref=e11]: Please note this consent will expire today.
+    - generic [ref=e12]: You can revoke your consent anytime.
+    - heading "Manage your data sharing" [level=4] [ref=e15] [cursor=pointer]:
+      - generic [ref=e16]: Manage your data sharing
+      - img [ref=e18]
+    - generic [ref=e22]: We'll delete your data when we no longer need it.
+    - heading "Supporting parties" [level=4] [ref=e24] [cursor=pointer]:
+      - generic [ref=e25]: Supporting parties
+      - img [ref=e27]
+  - button "Approve" [ref=e34] [cursor=pointer]:
+    - generic [ref=e35]: Approve
+  - img [ref=e39]

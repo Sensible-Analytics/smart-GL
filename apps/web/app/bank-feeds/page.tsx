@@ -1,8 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { RefreshCw, Plus, CheckCircle2, AlertCircle, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { DemoAccountsPanel } from "@/components/DemoAccountsPanel";
 
 const CONNECTIONS = [
   { id: "c1", bank: "ANZ",     name: "Business Everyday",  number: "****4521", balance: "$82,345.20", lastSync: "Today 09:14", status: "active",  txnCount: 143 },
@@ -11,7 +12,31 @@ const CONNECTIONS = [
 
 export default function BankFeedsPage() {
   const [syncing, setSyncing] = useState(false);
+  const [demoAccounts, setDemoAccounts] = useState<DemoAccount[]>([]);
   const { toast }  = useToast();
+
+  interface DemoAccount {
+    id: string;
+    name: string;
+    account_no: string;
+    balance: number;
+    type: string;
+    institution: string;
+  }
+
+  useEffect(() => {
+    fetchDemoAccounts();
+  }, []);
+
+  async function fetchDemoAccounts() {
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/demo/demo-accounts`);
+      const data = await res.json();
+      setDemoAccounts(data);
+    } catch (e) {
+      console.error("Failed to fetch demo accounts:", e);
+    }
+  }
 
   async function runSync() {
     setSyncing(true);
@@ -75,6 +100,8 @@ export default function BankFeedsPage() {
           <div className="text-xs text-gray-400 text-center">135+ Australian banks supported via CDR</div>
         </div>
       </div>
+
+      <DemoAccountsPanel demoAccounts={demoAccounts} />
 
       <div className="bg-white rounded-xl shadow-sm border border-gray-100">
         <div className="px-5 py-4 border-b flex items-center justify-between">

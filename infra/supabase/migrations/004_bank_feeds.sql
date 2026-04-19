@@ -1,6 +1,6 @@
 -- Bank connections (one per bank account linked via Basiq)
 CREATE TABLE bank_connections (
-  id                UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id         UUID NOT NULL REFERENCES tenants(id),
   basiq_connection_id   TEXT NOT NULL,
   institution_name  TEXT NOT NULL,
@@ -24,7 +24,7 @@ CREATE POLICY bank_conn_tenant_isolation ON bank_connections
 
 -- Raw bank transactions from Basiq
 CREATE TABLE bank_transactions (
-  id                UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   tenant_id         UUID NOT NULL REFERENCES tenants(id),
   connection_id     UUID NOT NULL REFERENCES bank_connections(id),
   basiq_id          TEXT NOT NULL,
