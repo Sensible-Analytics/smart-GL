@@ -68,7 +68,7 @@ class LLMCategoriser:
     def __init__(
         self,
         model: str = "claude-sonnet-4-20250514",
-        confidence_threshold: float = 0.70,
+        confidence_threshold: float = 0.80,
         max_tokens: int = 150,
     ):
         self.model = model
@@ -221,6 +221,6 @@ def create_llm_categoriser(
 ) -> LLMCategoriser:
     return LLMCategoriser(
         model=model or "claude-sonnet-4-20250514",
-        confidence_threshold=confidence_threshold or 0.70,
+        confidence_threshold=confidence_threshold or 0.65,
         max_tokens=kwargs.get("max_tokens", 150),
     )
