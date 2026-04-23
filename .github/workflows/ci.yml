@@ -30,7 +30,7 @@ jobs:
       - name: Lint Python
         run: |
           pip install ruff
-          ruff check apps/api/ --ignore F401
+          ruff check apps/api/
 
   type-check-web:
     runs-on: ubuntu-latest
