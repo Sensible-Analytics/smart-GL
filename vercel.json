@@ -1,8 +1,9 @@
 {
-  "buildCommand": "cd apps/web && pnpm install --frozen-lockfile && pnpm build",
-  "installCommand": "cd apps/web && pnpm install --frozen-lockfile",
-  "outputDirectory": "apps/web/.next",
+  "buildCommand": "pnpm install && pnpm build",
+  "installCommand": "pnpm install",
+  "outputDirectory": ".next",
   "framework": "nextjs",
+  "rootDirectory": "apps/web",
   "env": {
     "NEXT_PUBLIC_API_URL": "https://smartgl-api-v2.onrender.com"
   }
