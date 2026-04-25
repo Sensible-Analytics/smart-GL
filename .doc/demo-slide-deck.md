@@ -90,18 +90,6 @@ All standard Australian- compatible. Your existing software can import via API.
 
 ---
 
-## Pricing
-
-| Tier | Features |
-|------|---------|
-| Starter | Bank feed + basic categorisation |
-| Pro + | Unlimited users, AI chat, forecasting |
-| Firm + | White-label, API access, deduped data |
-
-Contact for custom pricing on bookkeeper firms.
-
----
-
 ## Try It
 
 **Live Demo**: https://smart-1m1jc7yf5-sensibleanalytic-4114s-prods-projects.vercel.app
