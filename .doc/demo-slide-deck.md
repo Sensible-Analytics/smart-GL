@@ -1,12 +1,16 @@
-# Smart GL - AI-Powered Accounting for Small Business
+# Smart GL - Finally, Accounting That Works as Hard as You Do
+
+---
 
 ## The Problem
 
-**You started your business to do what you love - not to become an accountant.**
+**You didn't start a business to become an accountant.**
 
-Every week, hours disappear into bank statements, categorising transactions, and worrying about BAS. The numbers never match. Your bookkeeper costs more each quarter. And you have no real idea if you're actually making money until someone else tells you.
+Every week: hours of data entry, guessing at categories, scrambling before BAS, and wondering "are we actually making money?"
 
-**What if your bank feed directly into your accounts? No data entry. No guessing. Always balanced.**
+Your bookkeeper costs more every quarter. Your bank feed sits in a spreadsheet. And the numbers never quite match.
+
+**What if your accounts just... did themselves?**
 
 ---
 
