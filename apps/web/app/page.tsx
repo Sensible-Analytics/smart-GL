@@ -20,14 +20,14 @@ interface TourState {
 }
 
 const TOUR_STEPS: TourStep[] = [
-  { id: "overview", title: "AI Auto-Categorised", desc: "The AI automatically categorises 68-89% of transactions. Target is 80%.", value: "89% auto-categorization", color: "#22c55e", action: undefined },
-  { id: "revenue", title: "Revenue", desc: "Your total income from sales and other sources for this period.", value: "68% auto = 15hrs saved", color: "#3b82f6", action: undefined },
-  { id: "expenses", title: "Expenses", desc: "All business costs including rent, wages, supplies.", value: "5hrs/week saved", color: "#e2e8f0", action: undefined },
-  { id: "profit", title: "Net Profit", desc: "Revenue minus Expenses. Your actual earnings.", value: "8.7% growth", color: "#f59e0b", action: undefined },
-  { id: "export", title: "Export BAS", desc: "One-click GST-ready CSV for your BAS return.", value: "15min → seconds", color: "#8b5cf6", action: undefined },
-  { id: "gst", title: "GST Compliance", desc: "Automated tax calculations and reporting.", value: "8hrs/month saved", color: "#14b8a6", action: undefined },
-  { id: "datefilter", title: "Date Filtering", desc: "Analyze any time period instantly.", value: "3hrs/report saved", color: "#f97316", action: undefined },
-  { id: "csvexport", title: "Export Functionality", desc: "Generate reports instantly with one click.", value: "15min → seconds", color: "#ec4899", action: undefined },
+  { id: "overview", title: "AI Auto-Categorised", desc: "The AI automatically categorises 68-89% of transactions. Target is 80%. Each transaction is analyzed and sorted into the right account code - saves hours of data entry.", value: "89% auto-categorization", color: "#22c55e" },
+  { id: "revenue", title: "Revenue", desc: "Total income from all sales and other sources. Track how much money is coming in from clients and jobs.", value: "$51,300 YTD", color: "#3b82f6" },
+  { id: "expenses", title: "Expenses", desc: "All business costs - materials, wages, rent, vehicle. Know exactly where money is going.", value: "$31,200 YTD", color: "#e2e8f0" },
+  { id: "auto-cat", title: "Auto-Categorisation", desc: "AI looks at each transaction and picks the right account code. Most are done automatically - you only review the tricky ones.", value: "68-89% auto-categorization", color: "#22c55e" },
+  { id: "profit", title: "Net Profit", desc: "What's left after expenses. Your real earnings - revenue minus all costs.", value: "$18,450 YTD", color: "#f59e0b" },
+  { id: "ledger", title: "Ledger Balanced", desc: "Double-entry ensures every transaction has matching credits and debits. The books always balance.", value: "Ledger balanced", color: "#14b8a6" },
+  { id: "export", title: "Export Reports", desc: "One-click reports ready for BAS, tax, or your accountant. CSV or screen view.", value: "15min → seconds", color: "#8b5cf6" },
+  { id: "chart", title: "Visual Trends", desc: "See revenue vs expenses over time. Spot patterns and plan ahead.", value: "7 months data", color: "#ec4899" },
 ];
 
 type InteractiveElementProps = {
@@ -38,46 +38,26 @@ type InteractiveElementProps = {
 
 function TourOverlay({ isOpen, onClose, step, setStep }: { isOpen: boolean; onClose: () => void; step: number; setStep: (n: number) => void }) {
   const currentStep = TOUR_STEPS[step];
+  const stepToElement: Record<string, string> = {
+    "overview": "[data-tour=revenue]",
+    "revenue": "[data-tour=revenue]",
+    "expenses": "[data-tour=expenses]",
+    "auto-cat": "[data-tour=auto-cat]",
+    "profit": "[data-tour=profit]",
+    "ledger": "[data-tour=ledger]",
+    "export": "[data-tour=export]",
+    "chart": "[data-tour=chart]",
+  };
+  const selector = stepToElement[currentStep.id] || "[data-tour=revenue]";
+
   return (
-    <div className="fixed inset-0 z-50 pointer-events-none">
-      <div className="absolute inset-0 bg-black/70 pointer-events-auto" />
-      <div className="absolute inset-0 pointer-events-auto">
-        <motion.div
-          className="absolute w-64 h-64 bg-white/10 backdrop-blur-xl border-2 border-white/20 rounded-full pointer-events-none"
-          style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        />
-        <motion.div
-          className="absolute w-96 h-96 border-2 border-white/20 rounded-full"
-          style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
-          initial={{ scale: 1, opacity: 1 }}
-          animate={{ scale: 1.1, opacity: 0 }}
-          transition={{ repeat: Infinity, duration: 4, delay: 1, ease: "easeOut" }}
-        />
-      </div>
+    <div className="fixed inset-0 z-50">
+      <div className="absolute inset-0 bg-black/70" />
 
-      <div className="absolute bottom-6 right-6 flex gap-3 pointer-events-auto">
-        {step > 0 && (
-          <button onClick={() => setStep(step - 1)} className="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-white/20 rounded-lg transition-colors">
-            Previous
-          </button>
-        )}
-        {step < TOUR_STEPS.length - 1 ? (
-          <button onClick={() => setStep(step + 1)} className="px-4 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
-            Next
-          </button>
-        ) : (
-          <button onClick={onClose} className="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-white/20 rounded-lg transition-colors">
-            Got it!
-          </button>
-        )}
-      </div>
-
-      <div className="absolute top-4 right-4 w-80 pointer-events-auto">
+      <div className="absolute top-4 right-4 w-80">
         <motion.div
           className="bg-white rounded-2xl shadow-2xl p-6 border-l-4"
+          style={{ borderLeftColor: currentStep.color }}
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 300 }}
@@ -92,20 +72,42 @@ function TourOverlay({ isOpen, onClose, step, setStep }: { isOpen: boolean; onCl
             </button>
           </div>
           <div className="flex items-center gap-3 pt-3 border-t border-gray-100">
-            <div className="p-2 rounded-lg bg-blue-50">
-              <Target size={20} className="text-blue-600" />
+            <div className="p-2 rounded-lg" style={{ backgroundColor: currentStep.color + "20" }}>
+              <Target size={20} style={{ color: currentStep.color }} />
             </div>
             <div>
-              <span className="text-xs text-gray-500">Value</span>
+              <span className="text-xs text-gray-500 block">Result</span>
               <span className="text-sm font-semibold text-gray-900">{currentStep.value}</span>
             </div>
           </div>
         </motion.div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 pointer-events-auto">
-        {TOUR_STEPS.map((_, idx) => (
-          <button key={idx} onClick={() => setStep(idx)} className={`w-2 h-2 rounded-full transition-all ${idx === step ? 'w-12 bg-white/80' : 'bg-white/30 hover:bg-white/50'}`} />
+      <div className="absolute bottom-6 right-6 flex gap-3">
+        {step > 0 && (
+          <button onClick={() => setStep(step - 1)} className="px-4 py-2 text-sm font-medium text-white hover:bg-white/20 rounded-lg transition-colors">
+            Previous
+          </button>
+        )}
+        {step < TOUR_STEPS.length - 1 ? (
+          <button onClick={() => setStep(step + 1)} className="px-4 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
+            Next
+          </button>
+        ) : (
+          <button onClick={onClose} className="px-4 py-2 text-sm font-bold text-white bg-green-600 hover:bg-green-700 rounded-lg transition-colors">
+            Got it!
+          </button>
+        )}
+      </div>
+
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+        {TOUR_STEPS.map((s, idx) => (
+          <button
+            key={idx}
+            onClick={() => setStep(idx)}
+            className={`h-2 rounded-full transition-all ${idx === step ? 'w-8 bg-white' : 'w-2 bg-white/40 hover:bg-white/60'}`}
+            style={{ backgroundColor: idx === step ? currentStep.color : undefined }}
+          />
         ))}
       </div>
     </div>
@@ -113,7 +115,21 @@ function TourOverlay({ isOpen, onClose, step, setStep }: { isOpen: boolean; onCl
 }
 
 function InteractiveElement({ children, tourId, className = "" }: InteractiveElementProps) {
-  return <div data-tour={tourId} className={`relative z-10 ${className}`}>{children}</div>;
+  return <div data-tour={tourId} className={`relative z-10 transition-all duration-300 ${className}`}>{children}</div>;
+}
+
+function TourHighlight({ tourId, step }: { tourId: string; step: number }) {
+  const stepIds = TOUR_STEPS.map(s => s.id);
+  const isActive = stepIds[step] === tourId;
+  if (!isActive) return null;
+  return (
+    <motion.div
+      className="absolute inset-0 rounded-xl border-2 border-blue-500 bg-blue-500/10 pointer-events-none"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
+    />
+  );
 }
 
 export default function Dashboard() {
@@ -142,7 +158,7 @@ export default function Dashboard() {
               Start Tour
             </button>
           )}
-          <div className="flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 text-xs px-3 py-1.5 rounded-full font-medium">
+          <div className="flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 text-xs px-3 py-1.5 rounded-full font-medium" data-tour="ledger">
             <CheckCircle2 size={14} />
             Ledger balanced
           </div>
@@ -204,8 +220,9 @@ export default function Dashboard() {
       </div>
 
       <div className="grid grid-cols-3 gap-4">
-        <div className="col-span-2 bg-white rounded-xl p-5 shadow-sm border border-gray-100">
-          <h2 className="font-semibold text-gray-800 mb-4">Revenue vs Expenses</h2>
+        <InteractiveElement tourId="chart" className="col-span-2">
+          <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+            <h2 className="font-semibold text-gray-800 mb-4">Revenue vs Expenses</h2>
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={[{ month: "Oct", revenue: 48200, expenses: 28400 }, { month: "Nov", revenue: 52100, expenses: 31200 }, { month: "Dec", revenue: 38900, expenses: 24100 }, { month: "Jan", revenue: 55400, expenses: 33800 }, { month: "Feb", revenue: 47300, expenses: 29600 }, { month: "Mar", revenue: 61200, expenses: 36400 }, { month: "Apr", revenue: 51300, expenses: 31200 }]}>
               <XAxis dataKey="month" tick={{ fontSize: 12 }} axisLine={false} tickLine={false} />
@@ -213,9 +230,10 @@ export default function Dashboard() {
               <RechartsTooltip formatter={(v) => `$${v.toLocaleString()}`} />
               <Bar dataKey="revenue" fill="#3b82f6" radius={[4,4,0,0]} name="Revenue" />
               <Bar dataKey="expenses" fill="#e2e8f0" radius={[4,4,0,0]} name="Expenses" />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
+</BarChart>
+            </ResponsiveContainer>
+          </div>
+        </InteractiveElement>
 
         <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
           <h2 className="font-semibold text-gray-800 mb-4">AI Categorisation</h2>
