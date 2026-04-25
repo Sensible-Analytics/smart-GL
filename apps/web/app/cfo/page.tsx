@@ -40,13 +40,16 @@ export default function CfoDashboardPage() {
 
   useEffect(() => {
     Promise.all([
-      fetch("/api/cfo/anomalies").then(r => r.json()).catch(() => []),
-      fetch("/api/cfo/briefing").then(r => r.json()).catch(() => []),
+      fetch("/api/cfo/anomalies").then(r => r.json()).then(d => d.anomalies || []).catch(() => []),
+      fetch("/api/cfo/briefing").then(r => r.json()).then(d => Array.isArray(d) ? d : [d]).catch(() => []),
       fetch("/api/cfo/cash-flow").then(r => r.json()).catch(() => ({})),
     ]).then(([a, b, c]) => {
-      setAnomalies(a.anomalies || a || []);
-      setBriefings(b.briefings || b || []);
-      setCashFlow(c.forecast || c || []);
+      setAnomalies(a || []);
+      setBriefings(b || []);
+      const cf = c?.current ? [
+        { period: c.current.month_year, inflow: c.current.inflows_cents/100, outflow: c.current.outflows_cents/100, net: (c.current.closing_cents - c.current.opening_cents)/100 }
+      ] : [];
+      setCashFlow(cf);
     }).catch(console.error)
     .finally(() => setLoading(false));
   }, []);
@@ -117,14 +120,20 @@ export default function CfoDashboardPage() {
               <div className="text-muted-foreground">Loading...</div>
             ) : anomalies.length > 0 ? (
               <div className="space-y-3">
-                {anomalies.slice(0, 5).map((a) => (
+                {anomalies.slice(0, 5).map((a: any) => (
                   <div key={a.id} className="p-3 bg-amber-50 rounded-lg">
-                    <div className="text-sm font-medium">{a.type}</div>
+                    <div className="text-sm font-medium">{a.title}</div>
                     <div className="text-xs text-muted-foreground mt-1">
                       {a.description}
                     </div>
-                    <div className="text-xs font-medium mt-2">
-                      ${a.amount.toLocaleString()}
+                    <div className="text-xs font-medium mt-2 flex items-center gap-2">
+                      <span className={`px-2 py-0.5 rounded ${
+                        a.severity === "high" ? "bg-red-100 text-red-700" :
+                        a.severity === "medium" ? "bg-orange-100 text-orange-700" :
+                        "bg-gray-100 text-gray-600"
+                      }`}>
+                        {a.severity}
+                      </span>
                     </div>
                   </div>
                 ))}
