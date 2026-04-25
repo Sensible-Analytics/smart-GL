@@ -75,6 +75,8 @@ Ask questions in plain English: "How did we do this month?" "What's our cash pos
 
 ## Getting Started
 
+**Live Demo**: https://smart-1m1jc7yf5-sensibleanalytic-4114s-projects.vercel.app
+
 1. Connect bank account (BSB + account number)
 2. Transactions import automatically
 3. Review occasional AI flags

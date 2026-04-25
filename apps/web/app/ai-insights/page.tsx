@@ -32,6 +32,30 @@ const INSIGHTS = [
     action: null,
     severity: "success",
   },
+  {
+    type: "auto-journal",
+    title: "Auto journal: Monthly depreciation",
+    body: "Depreciation of $1,250 calculated for fixed assets based on useful life schedules. Ready to post.",
+    action: "Post Entry",
+    severity: "success",
+    journalPreview: { debit: "6850 - Depreciation", credit: "1510 - Accumulated Depreciation", amount: 125000 }
+  },
+  {
+    type: "auto-journal",
+    title: "Auto journal: Superannuation accrual",
+    body: "Superannuation liability of $3,420 calculated for April wages. Ready to post.",
+    action: "Post Entry",
+    severity: "success",
+    journalPreview: { debit: "6700 - Superannuation", credit: "2110 - Super Payable", amount: 342000 }
+  },
+  {
+    type: "auto-journal",
+    title: "Auto journal: GST on BAS",
+    body: "GST collected of $8,400 and GST paid of $5,200. Net GST payable $3,200. Ready to post.",
+    action: "Post Entry",
+    severity: "success",
+    journalPreview: { debit: "2000 - GST Collected", credit: "2001 - GST Paid", amount: 320000 }
+  },
 ];
 
 const severityStyles = {

@@ -92,7 +92,7 @@ export default function ReportsPage() {
   };
 
   return (
-    <div className="space-y-5">
+    <div id="report-content" className="space-y-5">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Reports</h1>
