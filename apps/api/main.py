@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 import structlog
 
-from routers import transactions, journal, reports, basiq, accounts
+from routers import transactions, journal, reports, basiq, accounts, cfo
 
 logger = structlog.get_logger()
 
@@ -30,6 +30,7 @@ app.include_router(journal.router, prefix="/journal", tags=["journal"])
 app.include_router(reports.router, prefix="/reports", tags=["reports"])
 app.include_router(basiq.router, prefix="/basiq", tags=["basiq"])
 app.include_router(accounts.router, prefix="/accounts", tags=["accounts"])
+app.include_router(cfo.router, prefix="/api/cfo", tags=["cfo"])
 
 
 @app.get("/health")
