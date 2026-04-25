@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, ArrowLeftRight, BookOpen,
-  BarChart2, Landmark, List, Settings, Brain
+  BarChart2, Landmark, List, Settings, Brain, Wallet
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +14,7 @@ const nav = [
   { href: "/reports", label: "Reports", icon: BarChart2 },
   { href: "/bank-feeds", label: "Bank Feeds", icon: Landmark },
   { href: "/accounts", label: "Chart of Accounts", icon: List },
+  { href: "/cfo", label: "CFO Dashboard", icon: Wallet },
   { href: "/ai-insights", label: "AI Insights", icon: Brain },
   { href: "/settings", label: "Settings", icon: Settings },
 ];
