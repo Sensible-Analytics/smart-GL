@@ -30,6 +30,8 @@ const TOUR_STEPS: TourStep[] = [
   { id: "chart", title: "Visual Trends", desc: "See revenue vs expenses over time. Spot patterns and plan ahead.", value: "7 months data", color: "#ec4899" },
 ];
 
+const STEP_IDS = TOUR_STEPS.map(s => s.id);
+
 type InteractiveElementProps = {
   children: ReactNode;
   tourId: string;
@@ -38,17 +40,6 @@ type InteractiveElementProps = {
 
 function TourOverlay({ isOpen, onClose, step, setStep }: { isOpen: boolean; onClose: () => void; step: number; setStep: (n: number) => void }) {
   const currentStep = TOUR_STEPS[step];
-  const stepToElement: Record<string, string> = {
-    "overview": "[data-tour=revenue]",
-    "revenue": "[data-tour=revenue]",
-    "expenses": "[data-tour=expenses]",
-    "auto-cat": "[data-tour=auto-cat]",
-    "profit": "[data-tour=profit]",
-    "ledger": "[data-tour=ledger]",
-    "export": "[data-tour=export]",
-    "chart": "[data-tour=chart]",
-  };
-  const selector = stepToElement[currentStep.id] || "[data-tour=revenue]";
 
   return (
     <div className="fixed inset-0 z-50">
@@ -114,21 +105,19 @@ function TourOverlay({ isOpen, onClose, step, setStep }: { isOpen: boolean; onCl
   );
 }
 
-function InteractiveElement({ children, tourId, className = "" }: InteractiveElementProps) {
-  return <div data-tour={tourId} className={`relative z-10 transition-all duration-300 ${className}`}>{children}</div>;
-}
-
-function TourHighlight({ tourId, step }: { tourId: string; step: number }) {
-  const stepIds = TOUR_STEPS.map(s => s.id);
-  const isActive = stepIds[step] === tourId;
-  if (!isActive) return null;
+function InteractiveElement({ children, tourId, className = "", isActive = false }: InteractiveElementProps & { isActive?: boolean }) {
   return (
-    <motion.div
-      className="absolute inset-0 rounded-xl border-2 border-blue-500 bg-blue-500/10 pointer-events-none"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
-    />
+    <div data-tour={tourId} className={`relative z-10 transition-all duration-300 ${className}`}>
+      {children}
+      {isActive && (
+        <motion.div
+          className="absolute inset-0 rounded-xl border-2 border-blue-500 bg-blue-500/10 pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        />
+      )}
+    </div>
   );
 }
 
@@ -139,6 +128,7 @@ export default function Dashboard() {
   const expenses = "31,200";
   const profit = "18,450";
   const autoRate = 89;
+  const currentTourId = STEP_IDS[tourStep];
 
   return (
     <div className="space-y-6 p-6">
@@ -166,7 +156,7 @@ export default function Dashboard() {
       </div>
 
       <div className="grid grid-cols-4 gap-4">
-        <InteractiveElement tourId="revenue" className="KpiCard">
+        <InteractiveElement tourId="revenue" className="KpiCard" isActive={tourOpen && currentTourId === "revenue"}>
           <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
             <div className="flex items-start justify-between">
               <div>
@@ -179,7 +169,7 @@ export default function Dashboard() {
           </div>
         </InteractiveElement>
 
-        <InteractiveElement tourId="auto-cat" className="KpiCard">
+        <InteractiveElement tourId="auto-cat" className="KpiCard" isActive={tourOpen && currentTourId === "auto-cat"}>
           <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
             <div className="flex items-start justify-between">
               <div>
@@ -192,7 +182,7 @@ export default function Dashboard() {
           </div>
         </InteractiveElement>
 
-        <InteractiveElement tourId="expenses" className="KpiCard">
+        <InteractiveElement tourId="expenses" className="KpiCard" isActive={tourOpen && currentTourId === "expenses"}>
           <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
             <div className="flex items-start justify-between">
               <div>
@@ -205,7 +195,7 @@ export default function Dashboard() {
           </div>
         </InteractiveElement>
 
-        <InteractiveElement tourId="profit" className="KpiCard">
+        <InteractiveElement tourId="profit" className="KpiCard" isActive={tourOpen && currentTourId === "profit"}>
           <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
             <div className="flex items-start justify-between">
               <div>
@@ -220,7 +210,7 @@ export default function Dashboard() {
       </div>
 
       <div className="grid grid-cols-3 gap-4">
-        <InteractiveElement tourId="chart" className="col-span-2">
+        <InteractiveElement tourId="chart" className="col-span-2" isActive={tourOpen && currentTourId === "chart"}>
           <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
             <h2 className="font-semibold text-gray-800 mb-4">Revenue vs Expenses</h2>
           <ResponsiveContainer width="100%" height={220}>

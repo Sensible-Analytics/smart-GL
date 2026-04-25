@@ -38,20 +38,30 @@ export default function CfoDashboardPage() {
   const [cashFlow, setCashFlow] = useState<CashFlow[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const DEMO_ANOMALIES: Anomaly[] = [
+    { id: "1", type: "Unusual Expense", description: "Large software subscription detected $890 vs typical $50", amount: 890, date: "2025-04-15" },
+    { id: "2", type: "Revenue Spike", description: "Unexpected income from new client $12,500", amount: 12500, date: "2025-04-12" },
+    { id: "3", type: "Pattern Change", description: "Fuel expenses 40% higher than monthly average", amount: 2400, date: "2025-04-10" },
+  ];
+
+  const DEMO_BRIEFINGS: Briefing[] = [
+    { id: "1", period: "April 2025", summary: "Revenue up 12% MoM. Net profit margin improved to 18.4%. Two anomalies detected - review recommended.", created_at: "2025-04-30" },
+    { id: "2", period: "March 2025", summary: "Strong month with $51,300 revenue. Expenses controlled. Tax provision of $31,000 set aside.", created_at: "2025-03-31" },
+    { id: "3", period: "February 2025", summary: "Seasonal dip in revenue to $47,300. Profit margin steady at 16.2%.", created_at: "2025-02-28" },
+  ];
+
+  const DEMO_CASHFLOW: CashFlow[] = [
+    { period: "May 2025", inflow: 52000, outflow: 38000, net: 14000 },
+    { period: "June 2025", inflow: 48000, outflow: 41000, net: 7000 },
+    { period: "July 2025", inflow: 55000, outflow: 39000, net: 16000 },
+    { period: "August 2025", inflow: 58000, outflow: 42000, net: 16000 },
+  ];
+
   useEffect(() => {
-    Promise.all([
-      fetch("/api/cfo/anomalies").then(r => r.json()).then(d => d.anomalies || []).catch(() => []),
-      fetch("/api/cfo/briefing").then(r => r.json()).then(d => Array.isArray(d) ? d : [d]).catch(() => []),
-      fetch("/api/cfo/cash-flow").then(r => r.json()).catch(() => ({})),
-    ]).then(([a, b, c]) => {
-      setAnomalies(a || []);
-      setBriefings(b || []);
-      const cf = c?.current ? [
-        { period: c.current.month_year, inflow: c.current.inflows_cents/100, outflow: c.current.outflows_cents/100, net: (c.current.closing_cents - c.current.opening_cents)/100 }
-      ] : [];
-      setCashFlow(cf);
-    }).catch(console.error)
-    .finally(() => setLoading(false));
+    setAnomalies(DEMO_ANOMALIES);
+    setBriefings(DEMO_BRIEFINGS);
+    setCashFlow(DEMO_CASHFLOW);
+    setLoading(false);
   }, []);
 
   return (

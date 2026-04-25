@@ -1,95 +1,111 @@
-# Smart GL - How It Works
+# Smart GL - AI-Powered Accounting for SMB
 
-## The Problem
-
-Small businesses waste hours every week on manual data entry. Transactions sit in bank accounts uncategorised. BAS time means panic and spreadsheets. The core issue: no connection between bank data and accounting records.
+## For Practitioners Who Know The Ropes
 
 ---
 
-## How Money Moves Through Smart GL
+## The Problem You've Seen Before
 
-### 1. Bank Connection
-Bank feeds pull transactions directly from 135+ Australian banks via Basiq (CDR Open Banking). Every payment that hits the account gets pushed to Smart GL within minutes. No manual import. No CSV uploads. Just flows automatically.
+You've been here before: every EOFY, every BAS, every quarter.
 
-### 2. Auto-Categorisation
-Each transaction hits the system and gets examined by AI. The system looks at the description, amount, and timing - then picks the right account code. 80-89% of transactions sort themselves. The tricky ones get flagged for human review.
+A client hands you a shoebox of receipts. Or a CSV with 500 transactions, none categorised. Or "the bookkeeper" stopped showing up in March, and now it's July.
 
-### 3. Double-Entry Recording
-Every transaction creates two entries - debit and credit. This is the core of accounting. The system enforces it automatically. Books always balance. No more guessing whether the accounts add up.
+**The work isn't the accounting. It's the data entry.**
 
-### 4. Dashboard View
-Revenue, expenses, profit - all calculated and displayed. No formulas to write. No spreadsheets to maintain. The numbers are always current because the underlying data is always current.
+Bank feeds exist. But they give you a transaction dump, not a finished set of books. Someone still has to map every description to an account code. Someone still has to split GST. Someone still has to balance.
 
-### 5. AI Assistance
-Ask questions in plain English: "How did we do this month?" "What's our cash position?" The system pulls the relevant data and answers. No accounting knowledge required.
+What if that someone wasn't you?
 
 ---
 
-## Key Features
+## How It Works
 
-### Transactions
-- Real-time bank feed
-- Smart auto-categorisation  
-- Easy search and filter
-- Manual override when needed
+### 1. Bank Connection (Basiq API)
 
-### Reports
-- One-click P&L
-- Balance Sheet
-- GST/BAS ready
-- Export to PDF or CSV
+We connect to 135+ Australian financial institutions via Basiq's Open Banking API. Transactions hit the system within minutes of clearing - not days later, not via CSV download.
 
-### CFO Dashboard
-- Cash flow forecast
-- Anomaly detection
-- Monthly briefing
-- Industry comparison
+### 2. AI Categorisation (Claude Sonnet 4)
 
-### Bank Feeds
-- Connect 135+ banks
-- Add accounts anytime
-- Sync history tracked
+Each transaction hits a classification model trained on:
+- Merchant category codes (MCC)
+- Historical patterns from this specific business
+- User corrections (learns from you)
+
+**What's actually happening:** The model looks at the description, amount, timing, and sequence - then picks the most likely account code. 80-89% auto-categorise. The unsure ones flag for your review.
+
+### 3. Double-Entry Recording (Formance Ledger)
+
+Every transaction creates two postings - debit and credit. Enforced at the API level. No manual balance checking. No "does this add up?" questions.
+
+### 4. Real-Time Reports
+
+P&L, Balance Sheet, GST summary - all computed from live data. No "as at" date. No exporting to Excel to fix.
 
 ---
 
-## Why This Matters
+## What Makes This Different
 
-| Before | After |
-|--------|-------|
-| Manual data entry | Auto-import |
-| End-of-month panic | Real-time numbers |
-| Spreadsheet errors | Always balanced |
-| Scattered records | One system |
-| Guesswork decisions | Data-driven |
+| Traditional Bookkeeping | Smart GL |
+|----------------------|---------|
+| Transactions received in batch | Real-time stream |
+| Manual account mapping | 80-89% auto-categorised |
+| You find the errors | System flags anomalies |
+| Month-end reconciliation | Continuous |
+| Fixed account codes | Learns from your corrections |
 
----
-
-## What It Saves
-
-- Hours per week on transaction categorisation
-- 15+ minutes on each report (generate instantly)
-- Stress at BAS time
-- Money on unnecessary bookkeeper work
+**The value proposition for you:**
+- Less time on categorisation, more time on advisory
+- Fewer adjustments at EOFY
+- Cleaner trails for BAS audit
+- Clients who actually know their numbers
 
 ---
 
-## Getting Started
+## The AI Question
 
-1. Connect bank account (BSB + account number)
-2. Transactions import automatically
-3. Review occasional AI flags
-4. Run reports when needed
+You're a sceptic. Good.
 
-Demo shows "Coastal Trades" example - a plumbing business with realistic transactions, categorisations, and reports.
+**What the AI is doing:**
+- Pattern matching on transaction descriptions
+- NOT making accounting judgments
+- NOT generating financial advice
+- Flagging uncertain items for human review
+
+**What you control:**
+- Account code mapping rules
+- Auto-approve thresholds
+- Override any classification
+- Set review workflows
 
 ---
 
-## What to Try
+## Integration Points
 
-| Feature | Where | Try This |
-|---------|-------|---------|
-| See transactions | Transactions | Search for "ANZ" |
-| Try AI chat | CFO Dashboard | Ask "How did we do?" |
-| Add account | Bank Feeds | Click Add Bank Account |
-| Run report | Reports | Export PDF |
-| Start tour | Dashboard | Click "Start Tour" |
+- **Bank feeds**: Basiq (CDR Open Banking)
+- **Ledger**: Formance Ledger v2 (double-entry)
+- **AI**: Claude Sonnet 4 (classification)
+- **Database**: Supabase (PostgreSQL + vector)
+
+All standard Australian- compatible. Your existing software can import via API.
+
+---
+
+## Try It
+
+**Live Demo**: https://smart-hf50tubpw-sensibleanalytic-4114s-projects.vercel.app/reports
+
+1. Connect bank (BPAY demo available)
+2. Watch transactions flow
+3. Try the classification
+4. Run a report
+
+---
+
+## You're In Control
+
+| Task | What You Do | What AI Does |
+|------|------------|-------------|
+| Categorise tricky items | ✅ You decide | Flag for review |
+| Set account rules | ✅ You configure | Apply consistently |
+| Review anomalies | ✅ You approve | Detect deviation |
+| File BAS | ✅ You certify | Report ready |
