@@ -30,6 +30,8 @@ const TOUR_STEPS: TourStep[] = [
   { id: "chart", title: "Visual Trends", desc: "See revenue vs expenses over time. Spot patterns and plan ahead.", value: "7 months data", color: "#ec4899" },
 ];
 
+const STEP_IDS = TOUR_STEPS.map(s => s.id);
+
 type InteractiveElementProps = {
   children: ReactNode;
   tourId: string;
@@ -38,7 +40,6 @@ type InteractiveElementProps = {
 
 function TourOverlay({ isOpen, onClose, step, setStep }: { isOpen: boolean; onClose: () => void; step: number; setStep: (n: number) => void }) {
   const currentStep = TOUR_STEPS[step];
-  const STEP_IDS = TOUR_STEPS.map(s => s.id);
 
   return (
     <div className="fixed inset-0 z-50">
