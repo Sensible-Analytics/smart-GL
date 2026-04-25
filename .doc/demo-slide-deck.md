@@ -1,97 +1,86 @@
-# Smart GL - How It Works
+# Smart GL - AI-Powered Accounting for Small Business
 
 ## The Problem
 
-Small businesses waste hours every week on manual data entry. Transactions sit in bank accounts uncategorised. BAS time means panic and spreadsheets. The core issue: no connection between bank data and accounting records.
+**You started your business to do what you love - not to become an accountant.**
+
+Every week, hours disappear into bank statements, categorising transactions, and worrying about BAS. The numbers never match. Your bookkeeper costs more each quarter. And you have no real idea if you're actually making money until someone else tells you.
+
+**What if your bank feed directly into your accounts? No data entry. No guessing. Always balanced.**
 
 ---
 
-## How Money Moves Through Smart GL
+## How It Works (3 Simple Steps)
 
-### 1. Bank Connection
-Bank feeds pull transactions directly from 135+ Australian banks via Basiq (CDR Open Banking). Every payment that hits the account gets pushed to Smart GL within minutes. No manual import. No CSV uploads. Just flows automatically.
+### 1. One-Click Bank Connection
+Connect your business bank account in 2 minutes. All transactions flow in automatically - no ongoing import.
 
-### 2. Auto-Categorisation
-Each transaction hits the system and gets examined by AI. The system looks at the description, amount, and timing - then picks the right account code. 80-89% of transactions sort themselves. The tricky ones get flagged for human review.
+### 2. AI Does The Work
+Each transaction gets categorised automatically. 80-89% done for you. The odd ones get flagged for your review.
 
-### 3. Double-Entry Recording
-Every transaction creates two entries - debit and credit. This is the core of accounting. The system enforces it automatically. Books always balance. No more guessing whether the accounts add up.
+### 3. Reports At Your Fingertips
+Profit, GST, cash position - all updated in real-time. Export anytime.
 
-### 4. Dashboard View
-Revenue, expenses, profit - all calculated and displayed. No formulas to write. No spreadsheets to maintain. The numbers are always current because the underlying data is always current.
-
-### 5. AI Assistance
-Ask questions in plain English: "How did we do this month?" "What's our cash position?" The system pulls the relevant data and answers. No accounting knowledge required.
+**No accounting degree needed.**
 
 ---
 
-## Key Features
+## What You Get
 
-### Transactions
-- Real-time bank feed
-- Smart auto-categorisation  
-- Easy search and filter
-- Manual override when needed
+### Real-Time Dashboard
+- Your profit situation, always current
+- Cash flow forecast (what's coming in/out)
+- Unusual transactions flagged (catching mistakes before they compound)
 
-### Reports
-- One-click P&L
-- Balance Sheet
-- GST/BAS ready
+### Instant Reports
+- One-click P&L, Balance Sheet
+- GST/BAS ready - no scrambling at BAS time
 - Export to PDF or CSV
 
-### CFO Dashboard
-- Cash flow forecast
-- Anomaly detection
-- Monthly briefing
-- Industry comparison
-
-### Bank Feeds
-- Connect 135+ banks
-- Add accounts anytime
-- Sync history tracked
+### Your Time Back
+- No more transaction categorisation
+- Faster bookkeeper reconciliation
+- Questions answered instantly ("How are we tracking?")
 
 ---
 
-## Why This Matters
+## Why Small Business Owners Love It
 
 | Before | After |
 |--------|-------|
-| Manual data entry | Auto-import |
-| End-of-month panic | Real-time numbers |
-| Spreadsheet errors | Always balanced |
-| Scattered records | One system |
-| Guesswork decisions | Data-driven |
+| 2-5 hours/week on data entry | 0 hours - it's automatic |
+| BAS week = panic mode | Relaxed - numbers are always ready |
+| "What's our profit?" = guesswork | Live number, always know |
+| Bookkeeper costs $X/quarter | Less reconciliation needed |
+| Decisions on gut feel | Decisions on real data |
 
 ---
 
-## What It Saves
+## Who It's For
 
-- Hours per week on transaction categorisation
-- 15+ minutes on each report (generate instantly)
-- Stress at BAS time
-- Money on unnecessary bookkeeper work
-
----
-
-## Getting Started
-
-**Live Demo**: https://smart-1m1jc7yf5-sensibleanalytic-4114s-projects.vercel.app
-
-1. Connect bank account (BSB + account number)
-2. Transactions import automatically
-3. Review occasional AI flags
-4. Run reports when needed
-
-Demo shows "Coastal Trades" example - a plumbing business with realistic transactions, categorisations, and reports.
+- 1-20 employees
+- $200K-$2M annual revenue
+- Want to focus on their business, not books
+- Australian business (ABN)
 
 ---
 
-## What to Try
+## Try It Now
 
-| Feature | Where | Try This |
-|---------|-------|---------|
-| See transactions | Transactions | Search for "ANZ" |
-| Try AI chat | CFO Dashboard | Ask "How did we do?" |
-| Add account | Bank Feeds | Click Add Bank Account |
-| Run report | Reports | Export PDF |
-| Start tour | Dashboard | Click "Start Tour" |
+**Live Demo**: https://smart-1m1jc7yf5-sensibleanalytic-4114s-prods-projects.vercel.app
+
+1. Connect bank account (BPAY - no BSB needed for demo)
+2. Watch transactions flow in
+3. Try the AI chat: "How did we do this month?"
+
+Demo shows "Coastal Trades" - a plumbing business with realistic transactions, categorisations, and reports.
+
+---
+
+## Ready to Try?
+
+| What | Where |
+|------|-------|
+| See real transactions | Transactions tab |
+| Try AI chat | CFO Dashboard → "Ask anything" |
+| Run a report | Reports → Export PDF |
