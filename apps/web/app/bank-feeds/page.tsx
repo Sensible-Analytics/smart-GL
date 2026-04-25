@@ -4,6 +4,7 @@ import { RefreshCw, Plus, CheckCircle2, AlertCircle, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { DemoAccountsPanel } from "@/components/DemoAccountsPanel";
+import { AddBankModal } from "@/components/AddBankModal";
 
 const CONNECTIONS = [
   { id: "c1", bank: "ANZ",     name: "Business Everyday",  number: "****4521", balance: "$82,345.20", lastSync: "Today 09:14", status: "active",  txnCount: 143 },
@@ -13,6 +14,7 @@ const CONNECTIONS = [
 export default function BankFeedsPage() {
   const [syncing, setSyncing] = useState(false);
   const [demoAccounts, setDemoAccounts] = useState<DemoAccount[]>([]);
+  const [showAddModal, setShowAddModal] = useState(false);
   const { toast }  = useToast();
 
   interface DemoAccount {
@@ -63,7 +65,7 @@ export default function BankFeedsPage() {
             <RefreshCw size={14} className={`mr-1.5 ${syncing ? "animate-spin" : ""}`} />
             Sync All
           </Button>
-          <Button size="sm">
+          <Button size="sm" onClick={() => setShowAddModal(true)}>
             <Plus size={14} className="mr-1.5" />
             Add Bank Account
           </Button>
@@ -142,6 +144,8 @@ export default function BankFeedsPage() {
           <p>Transactions are fetched 30 days back on each sync to capture delayed postings. Deduplication is guaranteed by Basiq transaction ID.</p>
         </div>
       </div>
+
+      <AddBankModal isOpen={showAddModal} onClose={() => setShowAddModal(false)} />
     </div>
   );
 }

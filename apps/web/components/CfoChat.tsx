@@ -14,7 +14,17 @@ const SUGGESTED_QUESTIONS = [
   "How did we do this month?",
   "What's our cash runway?",
   "Show me any anomalies",
+  "What are our top expenses?",
+  "Compare to industry peers",
 ];
+
+const MOCK_RESPONSES: Record<string, string> = {
+  "How did we do this month?": "March was a strong month. Revenue was $127,500, up 12.5% from February. After expenses of $89,200, you kept $38,300 in profit. That's 30% margin - nice work!",
+  "What's our cash runway?": "You have $28,500 in the bank. At your current burn rate (~$2,970/day), you're looking at about 4 months before you need to raise more cash. Watch out - a BAS payment of ~$15,000 is due in 2 weeks.",
+  "Show me any anomalies": "Found 3 issues to review:\n\n1. HIGH: Duplicate payment - $4,250 paid to same vendor twice\n2. MEDIUM: First payment to new vendor for $12,000 - verify this is legit\n3. LOW: 12 transactions over $500 missing receipts",
+  "What are our top expenses?": "Top expenses in March:\n\n1. Wages: $9,200\n2. Materials: $8,950\n3. ATO: $3,100\n4. Subcontractors: $2,400\n5. Vehicle: $2,100\n\nMarketing was up 45% - was that a special campaign?",
+  "Compare to industry peers": "You're at the 48th percentile vs similar businesses. Your gross margin (48.5%) is below the industry median (52%), but your net profit (12.1%) is above average (8.5%). Your operating costs are in line - 62% vs industry 58%.",
+};
 
 export function CfoChat() {
   const [messages, setMessages] = useState<Message[]>([
@@ -38,6 +48,14 @@ export function CfoChat() {
     setError(null);
 
     try {
+      const qLower = q.toLowerCase();
+      for (const [key, answer] of Object.entries(MOCK_RESPONSES)) {
+        if (qLower.includes(key.toLowerCase().replace("?", ""))) {
+          setMessages((prev) => [...prev, { role: "assistant", content: answer }]);
+          setLoading(false);
+          return;
+        }
+      }
       const res = await fetch("/api/cfo/query", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

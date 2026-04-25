@@ -62,6 +62,35 @@ export default function ReportsPage() {
   const totalExpenses = PL_DATA.expenses.reduce((s, r) => s + r.amount, 0);
   const netProfit     = grossProfit - totalExpenses;
 
+  const handleExportPDF = () => {
+    const content = document.getElementById("report-content");
+    if (!content) return;
+    const printWindow = window.open("", "_blank");
+    if (!printWindow) return;
+    printWindow.document.write(`
+      <html>
+        <head>
+          <title>Coastal Trades - Financial Report</title>
+          <style>
+            body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 40px; }
+            h1 { font-size: 24px; margin-bottom: 4px; }
+            .subtitle { color: #666; font-size: 14px; margin-bottom: 24px; }
+            table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+            th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #eee; }
+            th { background: #f9f9f9; font-weight: 600; font-size: 12px; text-transform: uppercase; }
+            .total-row { font-weight: bold; background: #f0f9ff; }
+            .profit { color: #16a34a; }
+            .loss { color: #dc2626; }
+            @media print { body { padding: 20px; } }
+          </style>
+        </head>
+        <body>${content.innerHTML}</body>
+      </html>
+    `);
+    printWindow.document.close();
+    printWindow.print();
+  };
+
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between">
@@ -69,7 +98,7 @@ export default function ReportsPage() {
           <h1 className="text-2xl font-bold text-gray-900">Reports</h1>
           <p className="text-sm text-gray-500 mt-0.5">Coastal Trades Pty Ltd · FY 2024–25</p>
         </div>
-        <Button variant="outline" size="sm">
+        <Button variant="outline" size="sm" onClick={handleExportPDF}>
           <Download size={14} className="mr-1.5" />
           Export PDF
           <DemoBadge />
