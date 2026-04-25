@@ -1,90 +1,123 @@
-# Smart GL - Finally, Accounting That Works as Hard as You Do
+# Smart GL - AI-Powered Accounting for SMB
+
+## For Practitioners Who Know The Ropes
 
 ---
 
-## The Problem
+## The Problem You've Seen Before
 
-**You didn't start a business to become an accountant.**
+You've been here before: every EOFY, every BAS, every quarter.
 
-Every week: hours of data entry, guessing at categories, scrambling before BAS, and wondering "are we actually making money?"
+A client hands you a shoebox of receipts. Or a CSV with 500 transactions, none categorised. Or "the bookkeeper" stopped showing up in March, and now it's July.
 
-Your bookkeeper costs more every quarter. Your bank feed sits in a spreadsheet. And the numbers never quite match.
+**The work isn't the accounting. It's the data entry.**
 
-**What if your accounts just... did themselves?**
+Bank feeds exist. But they give you a transaction dump, not a finished set of books. Someone still has to map every description to an account code. Someone still has to split GST. Someone still has to balance.
 
----
-
-## How It Works (3 Simple Steps)
-
-### 1. One-Click Bank Connection
-Connect your business bank account in 2 minutes. All transactions flow in automatically - no ongoing import.
-
-### 2. AI Does The Work
-Each transaction gets categorised automatically. 80-89% done for you. The odd ones get flagged for your review.
-
-### 3. Reports At Your Fingertips
-Profit, GST, cash position - all updated in real-time. Export anytime.
-
-**No accounting degree needed.**
+What if that someone wasn't you?
 
 ---
 
-## What You Get
+## How It Works
 
-### Real-Time Dashboard
-- Your profit situation, always current
-- Cash flow forecast (what's coming in/out)
-- Unusual transactions flagged (catching mistakes before they compound)
+### 1. Bank Connection (Basiq API)
 
-### Instant Reports
-- One-click P&L, Balance Sheet
-- GST/BAS ready - no scrambling at BAS time
-- Export to PDF or CSV
+We connect to 135+ Australian financial institutions via Basiq's Open Banking API. Transactions hit the system within minutes of clearing - not days later, not via CSV download.
 
-### Your Time Back
-- No more transaction categorisation
-- Faster bookkeeper reconciliation
-- Questions answered instantly ("How are we tracking?")
+### 2. AI Categorisation (Claude Sonnet 4)
 
----
+Each transaction hits a classification model trained on:
+- Merchant category codes (MCC)
+- Historical patterns from this specific business
+- User corrections (learns from you)
 
-## Why Small Business Owners Love It
+**What's actually happening:** The model looks at the description, amount, timing, and sequence - then picks the most likely account code. 80-89% auto-categorise. The unsure ones flag for your review.
 
-| Before | After |
-|--------|-------|
-| 2-5 hours/week on data entry | 0 hours - it's automatic |
-| BAS week = panic mode | Relaxed - numbers are always ready |
-| "What's our profit?" = guesswork | Live number, always know |
-| Bookkeeper costs $X/quarter | Less reconciliation needed |
-| Decisions on gut feel | Decisions on real data |
+### 3. Double-Entry Recording (Formance Ledger)
+
+Every transaction creates two postings - debit and credit. Enforced at the API level. No manual balance checking. No "does this add up?" questions.
+
+### 4. Real-Time Reports
+
+P&L, Balance Sheet, GST summary - all computed from live data. No "as at" date. No exporting to Excel to fix.
 
 ---
 
-## Who It's For
+## What Makes This Different
 
-- 1-20 employees
-- $200K-$2M annual revenue
-- Want to focus on their business, not books
-- Australian business (ABN)
+| Traditional Bookkeeping | Smart GL |
+|----------------------|---------|
+| Transactions received in batch | Real-time stream |
+| Manual account mapping | 80-89% auto-categorised |
+| You find the errors | System flags anomalies |
+| Month-end reconciliation | Continuous |
+| Fixed account codes | Learns from your corrections |
+
+**The value proposition for you:**
+- Less time on categorisation, more time on advisory
+- Fewer adjustments at EOFY
+- Cleaner trails for BAS audit
+- Clients who actually know their numbers
 
 ---
 
-## Try It Now
+## The AI Question
+
+You're a sceptic. Good.
+
+**What the AI is doing:**
+- Pattern matching on transaction descriptions
+- NOT making accounting judgments
+- NOT generating financial advice
+- Flagging uncertain items for human review
+
+**What you control:**
+- Account code mapping rules
+- Auto-approve thresholds
+- Override any classification
+- Set review workflows
+
+---
+
+## Integration Points
+
+- **Bank feeds**: Basiq (CDR Open Banking)
+- **Ledger**: Formance Ledger v2 (double-entry)
+- **AI**: Claude Sonnet 4 (classification)
+- **Database**: Supabase (PostgreSQL + vector)
+
+All standard Australian- compatible. Your existing software can import via API.
+
+---
+
+## Pricing
+
+| Tier | Features |
+|------|---------|
+| Starter | Bank feed + basic categorisation |
+| Pro + | Unlimited users, AI chat, forecasting |
+| Firm + | White-label, API access, deduped data |
+
+Contact for custom pricing on bookkeeper firms.
+
+---
+
+## Try It
 
 **Live Demo**: https://smart-1m1jc7yf5-sensibleanalytic-4114s-prods-projects.vercel.app
 
-1. Connect bank account (BPAY - no BSB needed for demo)
-2. Watch transactions flow in
-3. Try the AI chat: "How did we do this month?"
-
-Demo shows "Coastal Trades" - a plumbing business with realistic transactions, categorisations, and reports.
+1. Connect bank (BPAY demo available)
+2. Watch transactions flow
+3. Try the classification
+4. Run a report
 
 ---
 
-## Ready to Try?
+## You're In Control
 
-| What | Where |
-|------|-------|
-| See real transactions | Transactions tab |
-| Try AI chat | CFO Dashboard → "Ask anything" |
-| Run a report | Reports → Export PDF |
+| Task | What You Do | What AI Does |
+|------|------------|-------------|
+| Categorise tricky items | ✅ You decide | Flag for review |
+| Set account rules | ✅ You configure | Apply consistently |
+| Review anomalies | ✅ You approve | Detect deviation |
+| File BAS | ✅ You certify | Report ready |
