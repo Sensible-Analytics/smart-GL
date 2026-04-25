@@ -92,7 +92,7 @@ All standard Australian- compatible. Your existing software can import via API.
 
 ## Try It
 
-**Live Demo**: https://smart-1m1jc7yf5-sensibleanalytic-4114s-prods-projects.vercel.app
+**Live Demo**: https://smart-hf50tubpw-sensibleanalytic-4114s-projects.vercel.app/reports
 
 1. Connect bank (BPAY demo available)
 2. Watch transactions flow
