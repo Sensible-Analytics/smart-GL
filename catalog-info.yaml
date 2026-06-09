@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: smartGL
+  description: "AI-powered accounting software for Australian small businesses"
+  annotations:
+    github.com/project-slug: crewcircle/smartGL
+spec:
+  type: service
+  lifecycle: production
+  owner: crewcircle/engineering
